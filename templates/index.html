@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Chat Home</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    {% if messages|length == 0 %}
+    <div class="home-container">
+        <div class="home-header">Good to see you, Prabhu</div>
+        <form method="post" class="home-form">
+            <input type="text" name="question" placeholder="Ask anything" autocomplete="off" class="home-input" required>
+            <button type="submit" class="home-button">➤</button>
+        </form>
+    </div>
+    {% else %}
+    <div class="chat-container">
+        <div class="chat-header">RAG Chat</div>
+        <div class="chat-window">
+            {% for msg in messages %}
+                <div class="message {{ msg.role }}">
+                    <div class="bubble">{{ msg.text }}</div>
+                </div>
+            {% endfor %}
+        </div>
+        <form method="post" class="chat-form">
+            <input type="text" name="question" placeholder="Type your question..." autocomplete="off" required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    {% endif %}
+</body>
+</html>
