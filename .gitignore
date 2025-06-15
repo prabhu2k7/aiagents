@@ -44,3 +44,10 @@ neurology_index/
 
 # Logs and temp
 *.log
+
+# FAISS vectorstore indexes
+oncology_index/
+neurology_index/
+
+
+
