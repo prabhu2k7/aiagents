@@ -1,35 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAG Chat Home</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+  <meta charset="utf-8">
+  <title>PDF RAG QA (Oncology vs Neurology)</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    {% if messages|length == 0 %}
-    <div class="home-container">
-        <div class="home-header">Good to see you, Prabhu</div>
-        <form method="post" class="home-form">
-            <input type="text" name="question" placeholder="Ask anything" autocomplete="off" class="home-input" required>
-            <button type="submit" class="home-button">➤</button>
-        </form>
-    </div>
-    {% else %}
-    <div class="chat-container">
-        <div class="chat-header">RAG Chat- AIAgents Powered</div>
-        <div class="chat-window">
-            {% for msg in messages %}
-                <div class="message {{ msg.role }}">
-                    <div class="bubble">{{ msg.text }}</div>
-                </div>
-            {% endfor %}
+  <div class="chat-wrapper">
+    <header>
+      <h1>PDF RAG QA</h1>
+      <p>Oncology vs Neurology</p>
+    </header>
+
+    <div id="chat" class="chat">
+      {% for msg in messages %}
+        <div class="message {{ msg.role }}">
+          <div class="bubble">{{ msg.text }}</div>
         </div>
-        <form method="post" class="chat-form">
-            <input type="text" name="question" placeholder="Type your question..." autocomplete="off" required>
-            <button type="submit">Send</button>
-        </form>
+      {% endfor %}
     </div>
-    {% endif %}
+
+    <form class="input-form" method="POST" autocomplete="off">
+      <input type="text" name="question" placeholder="Ask a question…" autofocus required>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script>
+    // Auto-scroll chat to bottom on load
+    const chat = document.getElementById('chat');
+    chat.scrollTop = chat.scrollHeight;
+  </script>
 </body>
 </html>
