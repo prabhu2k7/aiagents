@@ -1,5 +1,3 @@
-# Project: rag_app with LangChain Agent Tools and ChatGPT-like UI
-
 # File: .gitignore
 ```
 # Byte-compiled files
@@ -32,10 +30,8 @@ neurology_index/
 
 # Logs
 *.log
+```
 
-# FAISS vectorstore indexes
-oncology_index/
-neurology_index/
 
 
 
